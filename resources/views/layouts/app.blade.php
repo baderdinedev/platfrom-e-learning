@@ -29,7 +29,9 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <br>
+                @include('layouts.dashbordAVG')
+
             </main>
         </div>
     </body>

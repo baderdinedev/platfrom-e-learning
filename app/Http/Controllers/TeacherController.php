@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
@@ -27,6 +28,7 @@ class TeacherController extends Controller
    }
 
    public function TeacherRegisterCreate(Request $request){
+    
       Teacher::insert([
         'name' => $request->name,
         'email' => $request->email,
@@ -39,7 +41,22 @@ class TeacherController extends Controller
    }
 
     public function TeacherDashboard(){
-        return view('teacher.index');
+        $userc = User::all()->count();
+        $users = User::orderBy('id')->paginate(2);
+
+        return view('teacher.index',compact('userc','users'));
+    }
+
+    public function manageStud(){
+        $users = User::orderBy('id')->paginate(50);
+        return view('teacher.manage_studentt',compact('users'));
+    }
+
+    public function deleteUsers($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->back()->with('success', 'Student deleted successfully');
     }
 
     public function TeacherLogout(){

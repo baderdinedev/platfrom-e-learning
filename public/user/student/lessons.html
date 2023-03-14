@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="google" content="notranslate" />
+    <title>Typing Lessons - Learn To Type And Improve Typing Speed Free - Typing.com</title>
+    <meta name="description" content="Learn to touch type and improve your typing speed with free interactive typing lessons for all ages. Start your typing practice now!">
+    <link rel="alternate" hreflang="x-default" href="https://www.typing.com/student/lessons" />
+    <link rel="alternate" hreflang="en" href="https://www.typing.com/student/lessons" />
+    <link rel="alternate" hreflang="en-gb" href="https://www.typing.com/en-gb/student/lessons" />
+    <link rel="alternate" hreflang="es" href="https://www.typing.com/es/student/lessons" />
+    <link rel="alternate" hreflang="br" href="https://www.typing.com/br/student/lessons" />
+    <link rel="canonical" href="https://www.typing.com/student/lessons" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/dist/shared/images/favicons/typing/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/dist/shared/images/favicons/typing/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/dist/shared/images/favicons/typing/favicon-16x16.png">
+    <link rel="manifest" href="/dist/shared/images/favicons/typing/site.webmanifest">
+    <link rel="mask-icon" href="/dist/shared/images/favicons/typing/safari-pinned-tab.svg" color="#3295db">
+    <link rel="shortcut icon" href="/dist/shared/images/favicons/typing/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="msapplication-config" content="/dist/shared/images/favicons/typing/browserconfig.xml?v=XBzOaMKL95">
+    <meta name="theme-color" content="#ffffff">
+
+    <script>
+        (function() {
+            navigator.sayswho = function(agent) {
+                var ua = (typeof agent === 'string') ? agent : navigator.userAgent,
+                    tem,
+                    mobile = !!ua.match(/mobile/),
+                    M = ua.match(/(opera|edge|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || ['unknown', '1.0'];
+
+                var spider = ua.match(/bingbot|googlebot|adsbot|mediapartners|duckduckgo|aolbuild|baidu|teoma|slurp|yandex/i);
+                if (spider) {
+                    return {
+                        browser: 'spider',
+                        version: spider[0]
+                    };
+                }
+
+                if (ua.match(/BB10|blackberry|SMART-TV/i)) {
+                    return {
+                        browser: 'junk',
+                        version: 1,
+                        mobile: true
+                    };
+                }
+
+                if (/trident/i.test(M[1])) {
+                    tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+                    return {
+                        'browser': 'MSIE',
+                        'version': (tem[1] ? tem[1] : ''),
+                        mobile: mobile
+                    };
+                }
+                if (M[1] === 'Chrome') {
+                    tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+                    if (tem != null) {
+                        if (tem[0].startsWith('Edge')) {
+                            tem[1] = tem[0].substring(tem[0].indexOf('/') + 1);
+                            tem[0] = 'edge';
+                        }
+                        if (tem[0].startsWith('OPR')) {
+                            tem[1] = tem[0].substring(tem[0].indexOf('/') + 1);
+                            tem[0] = 'Opera';
+                        }
+                        return {
+                            'browser': tem[0],
+                            'version': tem[1],
+                            mobile: mobile
+                        };
+                    }
+                }
+                if (M[1] === 'Safari' && (ua.match(/iPad|iPhone|iPod/))) {
+                    ua = ua.replace(/iPhone |iPad |iPod /g, '');
+                    M = ua.match(/CPU OS (\d+)_/);
+                    return {
+                        browser: 'Safari',
+                        version: M[1],
+                        mobile: true
+                    }
+                }
+
+                M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+                if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
+
+                return {
+                    'browser': M[0],
+                    'version': M[1],
+                    mobile: mobile
+                };
+            };
+
+            var browser = navigator.sayswho();
+            if (browser.browser.toLowerCase() === 'msie' ||
+                (browser.browser.toLowerCase() === 'firefox' && browser.version < 50) ||
+                (browser.browser.toLowerCase() === 'edge' && browser.version < 15) ||
+                (browser.browser.toLowerCase() === 'chrome' && browser.version < 50) ||
+                (browser.browser.toLowerCase() === 'junk') ||
+                (browser.browser.toLowerCase() === 'safari' && browser.version < 10)) {
+                navigator.isFailBrowser = true;
+            }
+        })();
+    </script>
+    <script>
+        var browser = navigator.sayswho();
+        browser.version = parseFloat(browser.version);
+
+        // Block certain browsers from using the Student portal
+        if (navigator.isFailBrowser) {
+            location.href = '/failbrowser';
+        }
+
+        var bootstrapGlobals;
+
+        try {
+            window.__noLocalStorage = false;
+            window.localStorage.setItem('test', 'test');
+            if (window.localStorage.getItem('test') !== 'test') {
+                window.__noLocalStorage = true;
+            }
+        } catch (e) {
+            window.__noLocalStorage = true;
+            alert('An error occurred, preventing access to Typing.com!\n\nYour browser\'s privacy or security account or plugins/extensions are blocking Cookies and Local Storage, both of which are required for Typing.com to function.  You will not be able to use Typing.com until this is resolved. Please try a different browser, or update your browser\'s privacy/security account or plugins to not block Cookies or Local Storage.');
+        }
+
+        window.__makeAssoc = function(data, fields) {
+            return data.map(function(row, index) {
+                var obj = {};
+                fields.forEach(function(field, fieldIndex) {
+                    obj[field] = row[fieldIndex];
+                });
+                return obj;
+            });
+        };
+
+        window.__outerPage = function() {
+            var pages = ['/student/login', '/student/join/login', '/student/signup', '/student/password', '/student/oauth', '/student/join'];
+            if (pages.filter(function(page) {
+                    return location.pathname.indexOf(page) !== -1;
+                }).length) {
+                return true;
+            }
+        };
+
+        function __skinNameFromId() {
+            if (window.__noLocalStorage) {
+                return 'app';
+            }
+            var skinId = parseInt(localStorage.getItem('student_skin'));
+
+            if (__outerPage()) return 'app';
+            return FTWGLOBALS('skins').reduce(function(memo, row) {
+                return (row.id == skinId) ? row.file : memo;
+            }, 'app');
+        }
+
+        function __getCookie(n) {
+            var c = document.cookie.split(';').filter(function(c) {
+                return c.split('=')[0].trim() === n
+            })
+            return c.length > 0 ? c[0].split('=')[1] : undefined
+        }
+
+        function __setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function __eraseCookie(name) {
+            document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+
+        var FTWTEMPLATES = {};
+        var FTWGLOBALS = (function() {
+            var globals = {
+                env: 'production',
+                cacheId: '478',
+                site: 'typing',
+                resourceUrl: 'https://resources.typing.com',
+                app_url: 'https://www.typing.com',
+                app_domain: 'typing.com',
+                app_hostname: 'www.typing.com',
+                app_name: 'Typing.com',
+                noAdPages: [/\/student$/, /\/student\/upgrade$/, /\/student\/password$/, /\/student\/login$/, /\/student\/signup$/, /\/student\/digital-literacy$/, /\/student\/coding-curriculum$/, /\/student\/password$/, /\/student\/oauth$/],
+                skins: [{
+                    "id": 1,
+                    "file": "app",
+                    "name": "skins.app.name"
+                }, {
+                    "id": 2,
+                    "file": "fox",
+                    "name": "skins.fox.name"
+                }, {
+                    "id": 3,
+                    "file": "princess",
+                    "name": "skins.princess.name"
+                }, {
+                    "id": 4,
+                    "file": "forest",
+                    "name": "skins.forest.name"
+                }, {
+                    "id": 5,
+                    "file": "sea",
+                    "name": "skins.sea.name"
+                }, {
+                    "id": 6,
+                    "file": "pixels",
+                    "name": "skins.pixels.name"
+                }, {
+                    "id": 7,
+                    "file": "space",
+                    "name": "skins.space.name"
+                }, {
+                    "id": 8,
+                    "file": "superhero",
+                    "name": "skins.superhero.name"
+                }, {
+                    "id": 9,
+                    "file": "nitrotype",
+                    "name": "skins.nitrotype.name"
+                }, {
+                    "id": 10,
+                    "file": "basic",
+                    "name": "skins.basic.name"
+                }],
+                bugsnagKey: '1eb50933cfac3034947973ff047a6bf6',
+                includesLessonScreens: '',
+                isCustomLesson: ''
+            };
+
+            globals.language = "en";
+            globals.defaultLanguage = "en";
+            globals.languages = {
+                "en": {
+                    "id": "en",
+                    "flag": "us",
+                    "country": "US",
+                    "name": "US English",
+                    "display_order": 0
+                },
+                "en-gb": {
+                    "id": "en-gb",
+                    "flag": "gb",
+                    "country": "UK",
+                    "name": "UK English",
+                    "display_order": 1
+                },
+                "es": {
+                    "id": "es",
+                    "flag": "es",
+                    "country": "ES",
+                    "name": "Espa\u00f1ol",
+                    "display_order": 2
+                },
+                "br": {
+                    "id": "br",
+                    "flag": "br",
+                    "country": "BR",
+                    "name": "Portugu\u00eas",
+                    "display_order": 3
+                }
+            };
+            globals.languageLibraryMap = {
+                "keyboard": {
+                    "en": 1,
+                    "es": 17,
+                    "cn": 18,
+                    "tw": 18,
+                    "en-gb": 13,
+                    "fr": 6,
+                    "br": 8,
+                    "pt": 7,
+                    "ca": 5,
+                    "cf": 4
+                },
+                "moment": {
+                    "en": "en",
+                    "es": "es",
+                    "cn": "zh-cn",
+                    "tw": "zh-tw",
+                    "fr": "fr",
+                    "br": "pt-br",
+                    "pt": "pt",
+                    "ca": "en-ca",
+                    "cf": "fr-ca"
+                },
+                "numeral": {
+                    "en": "en",
+                    "es": "es-mx",
+                    "cn": "chs",
+                    "tw": "chs",
+                    "fr": "fr",
+                    "br": "pt-br",
+                    "pt": "pt-pt",
+                    "ca": "en-ca",
+                    "cf": "fr-ca"
+                },
+                "googleTranslate": {
+                    "en": "en",
+                    "es": "es",
+                    "cn": "zh_CN",
+                    "tw": "zh_TW",
+                    "en-gb": "en_GB",
+                    "fr": "fr",
+                    "br": "pt_BR",
+                    "pt": "pt_PT",
+                    "ca": "en_CA",
+                    "cf": "fr_CA"
+                },
+                "setlocale": {
+                    "en": "en_US.utf8",
+                    "es": "es_ES.utf8",
+                    "cn": "zh_CN.utf8",
+                    "tw": "zh_TW.utf8",
+                    "en-gb": "en_GB.utf8",
+                    "fr": "fr_FR.utf8",
+                    "br": "pt_BR.utf8",
+                    "pt": "pt_PT.utf8",
+                    "ca": "en_CA.utf8",
+                    "cf": "fr_CA.utf8"
+                }
+            };
+            globals.segments = ["student", "lessons"];
+            globals.whitelabel = null;
+            globals.products = [{
+                "product_id": "grade_k",
+                "name": "Kindergarten",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 0,
+                "display_order": 0,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_1",
+                "name": "1st Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 1,
+                "display_order": 1,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_2",
+                "name": "2nd Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 2,
+                "display_order": 2,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_3",
+                "name": "3rd Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 3,
+                "display_order": 3,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_4",
+                "name": "4th Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 4,
+                "display_order": 4,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_5",
+                "name": "5th Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 5,
+                "display_order": 5,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_6",
+                "name": "6th Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 6,
+                "display_order": 6,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_7",
+                "name": "7th Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 7,
+                "display_order": 7,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_8",
+                "name": "8th Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 8,
+                "display_order": 8,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_9",
+                "name": "9th Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 9,
+                "display_order": 9,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_10",
+                "name": "10th Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 10,
+                "display_order": 10,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_11",
+                "name": "11th Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 11,
+                "display_order": 11,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "grade_12",
+                "name": "12th Grade",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 12,
+                "display_order": 12,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "adult_learner",
+                "name": "Adult Learner",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 13,
+                "display_order": 13,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "typing",
+                "name": "Legacy",
+                "language": "en",
+                "country": "US",
+                "curriculum": "typing",
+                "grade": 0,
+                "display_order": 14,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "typing_es",
+                "name": "Legacy",
+                "language": "es",
+                "country": "ES",
+                "curriculum": "typing",
+                "grade": 0,
+                "display_order": 15,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }, {
+                "product_id": "typing_br",
+                "name": "Legacy",
+                "language": "br",
+                "country": "BR",
+                "curriculum": "typing",
+                "grade": 0,
+                "display_order": 16,
+                "updated_at": 0,
+                "created_at": 0,
+                "active": 1
+            }];
+            globals.googleSsoUri = "https:\/\/accounts.google.com\/o\/oauth2\/auth?client_id=1018631896966-d4a9ud0jsac31i35su7tsc5c1vsdm3lc.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.typing.com%2Fapiv1%2Fsite%2Foauth%3Ftype%3Dgoogle&scope=openid+profile+email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fclassroom.coursework.me&response_type=code";
+            globals.microsoftSsoUri = "https:\/\/login.microsoftonline.com\/common\/oauth2\/v2.0\/authorize?client_id=7dddaf41-cd56-49b9-95e7-4685c6c9755c&redirect_uri=https%3A%2F%2Fwww.typing.com%2Fapiv1%2Fsite%2Foauth&scope=https%3A%2F%2Fgraph.microsoft.com%2FUser.Read&response_type=code";
+            globals.cleverSsoUri = "https:\/\/clever.com\/oauth\/authorize?client_id=9283179bdbdf5378eb11&redirect_uri=https%3A%2F%2Fwww.typing.com%2Fapiv1%2Fsite%2Foauth%3Ftype%3Dclever&response_type=code";
+            globals.cleverClientId = "9283179bdbdf5378eb11";
+            globals.cleverRedirectUri = "https:\/\/www.typing.com\/apiv1\/site\/oauth?type=clever";
+            globals.classlinkSsoUri = "https:\/\/launchpad.classlink.com\/oauth2\/v2\/auth?scope=profile&client_id=c1555781821480cbf1180cf2d494271ad5a31cecc13b29&redirect_uri=https%3A%2F%2Fwww.typing.com%2Fapiv1%2Fsite%2Foauth%3Ftype%3Dclasslink&response_type=code";
+            globals.classlinkClientId = "c1555781821480cbf1180cf2d494271ad5a31cecc13b29";
+            globals.classlinkRedirectUri = "https:\/\/www.typing.com\/apiv1\/site\/oauth?type=classlink";
+
+            return function(key) {
+                if (typeof bootstrapGlobals === 'object') {
+                    Object.keys(bootstrapGlobals).forEach(function(key) {
+                        globals[key] = bootstrapGlobals[key];
+                    });
+                    bootstrapGlobals = undefined;
+                }
+
+                if (key === 'adBlocker') {
+                    return !document.getElementById('lgpJeOtxBKHX');
+                }
+
+                if (typeof globals[key] == 'undefined') {
+                    console.error('Missing FTWGLOBALS var: ' + key);
+                }
+
+                if (globals[key + '_fields']) {
+                    return __makeAssoc(globals[key], globals[key + '_fields']);
+                }
+                return globals[key];
+            };
+        })();
+    </script>
+
+    <script>
+        (function() {
+            var isEn = true;
+            FTWGLOBALS('products').forEach(function(row) {
+                if (row.product_id === localStorage.getItem('student_product_id') && row.language !== 'en') {
+                    isEn = false;
+                }
+            })
+            if (!isEn) {
+                /*  PTMono55.woff == english only, ptm55.woff == spanish */
+                document.write('<style>@font-face{font-family: "pt-mono";src: url("/fonts/ptm55f.woff") format("woff");font-weight: 900;}</style>');
+            }
+            document.write('<link id="base-stylesheet" href="/dist/student/css/' + __skinNameFromId() + '.min.478.css" rel="stylesheet">');
+        })();
+    </script>
+
+
+    <script src="/bootstrap/language/en/student.478.js"></script>
+    <script>
+        document.write('<script src=\'/bootstrap/' + (localStorage.getItem('student_product_id') ? localStorage.getItem('student_product_id') : 'typing') + '/en/bootstrap.478.js\'><\/script>')
+        var SHOW_ADS = !window.__noLocalStorage && !localStorage.getItem('student_license') && FTWGLOBALS('noAdPages').filter(function(page) {
+            return location.pathname.match(page);
+        }).length === 0 && localStorage.getItem('student_membership') !== 'premium';
+    </script>
+    <script src="/dist/student/js/app.478.js"></script>
+    <script>
+        // don't allow overwriting these base libraries, which some included scripts (ads or plugins) appear to do
+        Object.defineProperty(window, '_', {
+            writable: false
+        });
+        Object.defineProperty(window, '$', {
+            writable: false
+        });
+    </script>
+    <script type="text/javascript">
+        !(function(o, n) {
+            function $() {
+                ($.q = $.q || []).push(arguments)
+            }
+            $.v = 1, o[n] = o[n] || $
+        })(window, String.fromCharCode(97, 100, 109, 105, 114, 97, 108));
+        !(function(t, c, i) {
+            i = t.createElement(c), t = t.getElementsByTagName(c)[0], i.async = 1, i.src = "https://combcompetition.com/v2ujdzbOEVYcxrRy-mt5RF_IT03H3fgB2TGtcPNp1wvtfuKLMlX17ZIc", t.parentNode.insertBefore(i, t)
+        })(document, "script");;
+        !(function(o, t, n, c) {
+            function e(n) {
+                (function() {
+                    try {
+                        return (localStorage.getItem("v4ac1eiZr0") || "").split(",")[4] > 0
+                    } catch (o) {}
+                    return !1
+                })() && (n = o[t].pubads()) && n.setTargeting("admiral-engaged", "true")
+            }(c = o[t] = o[t] || {}).cmd = c.cmd || [], typeof c.pubads === n ? e() : typeof c.cmd.unshift === n ? c.cmd.unshift(e) : c.cmd.push(e)
+        })(window, "googletag", "function");
+    </script>
+
+    <script type="text/javascript" async=true>
+        if (SHOW_ADS) {
+            (function() {
+                var host = 'typing.com';
+                var element = document.createElement('script');
+                var firstScript = document.getElementsByTagName('script')[0];
+                var url = 'https://cmp.quantcast.com'.concat('/choice/', 'WhkWH77mdJMZb', '/', host,
+                    '/choice.js?tag_version=V2');
+                var uspTries = 0;
+                var uspTriesLimit = 3;
+                element.async = true;
+                element.type = 'text/javascript';
+                element.src = url;
+
+                firstScript.parentNode.insertBefore(element, firstScript);
+
+                function makeStub() {
+                    var TCF_LOCATOR_NAME = '__tcfapiLocator';
+                    var queue = [];
+                    var win = window;
+                    var cmpFrame;
+
+                    function addFrame() {
+                        var doc = win.document;
+                        var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+                        if (!otherCMP) {
+                            if (doc.body) {
+                                var iframe = doc.createElement('iframe');
+
+                                iframe.style.cssText = 'display:none';
+                                iframe.name = TCF_LOCATOR_NAME;
+                                doc.body.appendChild(iframe);
+                            } else {
+                                setTimeout(addFrame, 5);
+                            }
+                        }
+                        return !otherCMP;
+                    }
+
+                    function tcfAPIHandler() {
+                        var gdprApplies;
+                        var args = arguments;
+
+                        if (!args.length) {
+                            return queue;
+                        } else if (args[0] === 'setGdprApplies') {
+                            if (
+                                args.length > 3 &&
+                                args[2] === 2 &&
+                                typeof args[3] === 'boolean'
+                            ) {
+                                gdprApplies = args[3];
+                                if (typeof args[2] === 'function') {
+                                    args[2]('set', true);
+                                }
+                            }
+                        } else if (args[0] === 'ping') {
+                            var retr = {
+                                gdprApplies: gdprApplies,
+                                cmpLoaded: false,
+                                cmpStatus: 'stub'
+                            };
+
+                            if (typeof args[2] === 'function') {
+                                args[2](retr);
+                            }
+                        } else {
+                            if (args[0] === 'init' && typeof args[3] === 'object') {
+                                args[3] = Object.assign(args[3], {
+                                    tag_version: 'V2'
+                                });
+                            }
+                            queue.push(args);
+                        }
+                    }
+
+                    function postMessageEventHandler(event) {
+                        var msgIsString = typeof event.data === 'string';
+                        var json = {};
+
+                        try {
+                            if (msgIsString) {
+                                json = JSON.parse(event.data);
+                            } else {
+                                json = event.data;
+                            }
+                        } catch (ignore) {}
+
+                        var payload = json.__tcfapiCall;
+
+                        if (payload) {
+                            window.__tcfapi(
+                                payload.command,
+                                payload.version,
+                                function(retValue, success) {
+                                    var returnMsg = {
+                                        __tcfapiReturn: {
+                                            returnValue: retValue,
+                                            success: success,
+                                            callId: payload.callId
+                                        }
+                                    };
+                                    if (msgIsString) {
+                                        returnMsg = JSON.stringify(returnMsg);
+                                    }
+                                    if (event && event.source && event.source.postMessage) {
+                                        event.source.postMessage(returnMsg, '*');
+                                    }
+                                },
+                                payload.parameter
+                            );
+                        }
+                    }
+
+                    while (win) {
+                        try {
+                            if (win.frames[TCF_LOCATOR_NAME]) {
+                                cmpFrame = win;
+                                break;
+                            }
+                        } catch (ignore) {}
+
+                        if (win === window.top) {
+                            break;
+                        }
+                        win = win.parent;
+                    }
+                    if (!cmpFrame) {
+                        addFrame();
+                        win.__tcfapi = tcfAPIHandler;
+                        win.addEventListener('message', postMessageEventHandler, false);
+                    }
+                };
+
+                makeStub();
+
+                var uspStubFunction = function() {
+                    var arg = arguments;
+                    if (typeof window.__uspapi !== uspStubFunction) {
+                        setTimeout(function() {
+                            if (typeof window.__uspapi !== 'undefined') {
+                                window.__uspapi.apply(window.__uspapi, arg);
+                            }
+                        }, 500);
+                    }
+                };
+
+                var checkIfUspIsReady = function() {
+                    uspTries++;
+                    if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+                        console.warn('USP is not accessible');
+                    } else {
+                        clearInterval(uspInterval);
+                    }
+                };
+
+                if (typeof window.__uspapi === 'undefined') {
+                    window.__uspapi = uspStubFunction;
+                    var uspInterval = setInterval(checkIfUspIsReady, 6000);
+                }
+            })();
+        }
+    </script>
+
+    <script type="text/javascript" data-cfasync="false">
+        var forceAdNetwork = localStorage.getItem('_forceAdNetwork');
+        var __adSplits = 20
+
+        // start Ezoic enablement code
+        // __adSplits = 19  // 0 to 18 (19 numbers) because ezoic takes 1/20
+        // if(SHOW_ADS && !forceAdNetwork && !__getCookie('adSplit')) {  // session based ad handler
+        //     __setCookie('adSplit', Math.floor(Math.random()*(__adSplits+1)) === 0 ? 'session' : 'page', 0)  // 5% off the very first page view locks ezoic
+        // }
+        // end of Ezoic enablement code
+
+
+        // (function() {
+        //     if(__getCookie('country') && !['US','CA','PR','--'].includes(__getCookie('country'))) {
+        //         var countryRand = Math.floor(Math.random()*20)
+        //         if(countryRand >= 14 && countryRand <= 18) { forceAdNetwork = 'playwire'; }
+        //         else if(countryRand > 18) { forceAdNetwork = 'google'; }
+        //         else { forceAdNetwork = 'freestar'; }
+        //     }
+        // })()
+
+        var __adNetworkRandom = Math.floor(Math.random() * __adSplits)
+        // if(
+        //     forceAdNetwork === 'ezoic' ||
+        //     (!forceAdNetwork && __getCookie('adSplit') === 'session')
+        // ) {
+        //     window.__adNetwork = 'ezoic'
+        //     if(SHOW_ADS) {
+        //         (function() {
+        //             window.ezstandalone = window.ezstandalone || {};
+        //             window.ezstandalone.cmd = window.ezstandalone.cmd || [];
+        //
+        //             var ezoicScript = document.createElement('script')
+        //             ezoicScript.async = true
+        //             ezoicScript.type = 'text/javascript'
+        //             var useSSL = 'https:' === document.location.protocol
+        //             ezoicScript.src = (useSSL ? 'https:' : 'http:') +
+        //                 '//www.ezojs.com/ezoic/sa.min.js'
+        //             var node = document.getElementsByTagName('script')[0]
+        //             node.parentNode.insertBefore(ezoicScript, node)
+        //         })();
+        //     }
+        // } else
+
+        if (
+            forceAdNetwork === 'playwire' ||
+            (!forceAdNetwork && __adNetworkRandom >= 0 && __adNetworkRandom <= 12)
+            // ||(__getCookie('country') === 'IN' && __adNetworkRandom >= 10) // 50% of india traffic
+        ) {
+            window.__adNetwork = 'playwire'
+            window.ramp = window.ramp || {};
+            window.ramp.que = window.ramp.que || [];
+            window.ramp.passiveMode = true;
+            if (SHOW_ADS) {
+                (function() {
+                    var btLoaderScript = document.createElement('script');
+                    btLoaderScript.async = true;
+                    btLoaderScript.src = 'https://btloader.com/tag?o=5150306120761344&upapi=true';
+                    document.head.insertBefore(btLoaderScript, document.head.firstChild);
+
+                    var adScript = document.createElement('script')
+                    adScript.async = true
+                    adScript.defer = true
+                    adScript.type = 'text/javascript'
+                    adScript.src = '//cdn.intergient.com/1024299/72691/ramp.js'
+                    var node = document.getElementsByTagName('script')[0]
+                    node.parentNode.insertBefore(adScript, node)
+                })();
+            }
+        } else if (
+            forceAdNetwork === 'proper' ||
+            (!forceAdNetwork && __adNetworkRandom >= 13)
+        ) {
+            window.__adNetwork = 'proper'
+            var propertag = propertag || {};
+            propertag.cmd = propertag.cmd || [];
+            if (SHOW_ADS) {
+                (function() {
+                    var pm = document.createElement('script');
+                    pm.async = true;
+                    pm.type = 'text/javascript';
+                    var is_ssl = 'https:' === document.location.protocol;
+                    pm.src = (is_ssl ? 'https:' : 'http:') + '//global.proper.io/typing.min.js';
+                    var node = document.getElementsByTagName('script')[0];
+                    node.parentNode.insertBefore(pm, node);
+                })();
+            }
+        }
+        // else { // 5%
+        //     window.__adNetwork = 'google';
+        //     var googletag = googletag || {};
+        //     googletag.cmd = googletag.cmd || [];
+        //     if(SHOW_ADS) {
+        //       (function() {
+        //         var gads = document.createElement('script');
+        //         gads.async = true;
+        //         gads.type = 'text/javascript';
+        //         var useSSL = 'https:' === document.location.protocol;
+        //         gads.src = (useSSL ? 'https:' : 'http:') +
+        //           '//securepubads.g.doubleclick.net/tag/js/gpt.js';
+        //         var node = document.getElementsByTagName('script')[0];
+        //         node.parentNode.insertBefore(gads, node);
+        //       })();
+        //     }
+        //   }
+    </script>
+
+
+    <script>
+        var USE_GA = !localStorage.getItem('student_license') && localStorage.getItem('student_membership') !== 'premium';
+        if (USE_GA) {
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-231012-7', {
+                "sampleRate": 5
+            });
+            //      ga('send', 'pageview');
+
+            // Google Tag Manager
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-5M4N3PP');
+        } else {
+            function ga() {}
+        }
+    </script>
+    <meta name="google-site-verification" content="-FPk8eZ12PdbeWljJO9xhBXlV7lhXa9nplp-neZB-jA" />
+</head>
+
+<body>
+    <script>
+        if (SHOW_ADS) {
+            var e = document.createElement('div');
+            e.id = 'lgpJeOtxBKHX';
+            e.style.display = 'none';
+            document.body.appendChild(e);
+        }
+    </script>
+</body>
+
+</html>

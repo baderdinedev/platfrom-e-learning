@@ -59,11 +59,6 @@
                                  
                                 <span class="icon_soon_bottom_right"><i class="fas fa-unlock"></i></span>
                             </div>
-                            <div class="form-group icon_parent">
-                                <label for="rtpassword">Re-type Password</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
-                                <span class="icon_soon_bottom_right"><i class="fas fa-unlock"></i></span>
-                            </div>
                             <div class="form-group">
                                 <a class="registration" href=" ">Already have an account</a><br>
                                 <button type="submit" class="btn btn-blue">Signup</button>
