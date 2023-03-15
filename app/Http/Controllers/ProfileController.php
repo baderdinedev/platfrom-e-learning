@@ -43,10 +43,14 @@ class ProfileController extends Controller
         return view('chat.index');
     }
 
+
     public function getLesson(){
         $lesson = Lesson::all()->count();
         $lessonc = Lesson::orderBy('level_id')->paginate(5);
-        return view('layouts.app',compact('lesson','lessonc'));
+        $users = User::select('users.*', 'levels.name as level_name')
+        ->join('levels', 'users.level_id', '=', 'levels.id')
+        ->get();
+        return view('layouts.app',compact('lesson','lessonc','users'));
     }
 
     /**

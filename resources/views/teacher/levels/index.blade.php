@@ -1,5 +1,5 @@
-@extends('admin.admin_master')
-@section('admin')
+@extends('teacher.teacher_master')
+@section('teacher')
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 body{
@@ -72,9 +72,9 @@ body{
 <!-- wrapper -->
    <div class="wrapper">
        <!-- header area -->
-       @include('admin.header')
+       @include('teacher.header')
   
-       @include('admin.asaide')
+       @include('teacher.asaide')
 
        @if (Session::has('error'))
        <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -95,7 +95,7 @@ body{
     <section class="table_area">
         <div class="panel">
             <div class="panel_header">
-                <div class="panel_title"><span>Student information</span></div>
+                <div class="panel_title"><span>Level information</span></div>
             </div>
             <div class="panel_body">
                 <div class="table-responsive">
@@ -104,32 +104,38 @@ body{
                           <tr>
                               <th>ID</th>
                               <th>Name</th>
-                              <th>Email</th>
-                              <th>Level</th>
+                              <th>Description</th>
+                              <th>Voir</th>
+                              <th>Edit</th>
                               <th>Delete</th>
-                              <th>Certificat</th>
                           </tr>
                       </thead>
                       <tbody>
                           <tr>
-                            @foreach($users as $user)
-                                <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
+                            @foreach ($levels as $level)
+                                    <td>{{ $level->id }}</td>
+                                    <td>{{ $level->name }}</td>
+                                    <td>{{ $level->description }}</td>
+                                        <td>
+                                            <a href="{{ route('levels.show', ['id' => $level->id]) }}" class="btn btn-primary btn-lg">
+                                                <i id="myIcon" class="fas fa-eye"></i>
+                                              </a>
+                                        <td>
+                                            <a href="{{ route('levels.edit', ['id' => $level->id]) }}" class="btn btn-secondary">
+                                                <i class="fas fa-edit"></i>
+                                              </a>
+                                        </td>
                                     <td>
-                                        {{$levelName = $user->level->name}}
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('admin.deleteStudent', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                                        <form action="{{ route('levels.destroy', ['id' => $level->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this level?')">
+                                                <i class="fas fa-trash"></i>
+                                              </button>
                                         </form>
                                     </td>
-                                    <td><a href="{{route('sertificat')}}"><button href="{{route('sertificat')}}" class="btn btn-primary">sertificat</button></a></td>
                                 </tr>
-                            @endforeach    
+                            @endforeach       
                           </tr>
                       </tbody>
                     </table> 
@@ -141,4 +147,5 @@ body{
 </div><!--/middle content wrapper-->
 </div><!--/ content wrapper -->
    </div><!--/ wrapper -->
+
    @endsection

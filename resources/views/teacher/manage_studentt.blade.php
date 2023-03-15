@@ -1,5 +1,5 @@
-@extends('admin.admin_master')
-@section('admin')
+@extends('teacher.teacher_master')
+@section('teacher')
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 body{
@@ -72,9 +72,9 @@ body{
 <!-- wrapper -->
    <div class="wrapper">
        <!-- header area -->
-       @include('admin.header')
+       @include('teacher.header')
   
-       @include('admin.asaide')
+       @include('teacher.asaide')
 
        @if (Session::has('error'))
        <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -112,14 +112,16 @@ body{
                       </thead>
                       <tbody>
                           <tr>
-                            @foreach($users as $user)
+                            @foreach($userc as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td class="btn btn-info"></td>
+                                    
                                     <td>
-                                        <form action="{{ route('admin.deleteStudent', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                                        {{$levelName = $user->level->name}}
+                                    </td>                                    <td>
+                                        <form action="{{ route('teacher.deleteStudent', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>

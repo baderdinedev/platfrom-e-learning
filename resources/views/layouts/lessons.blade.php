@@ -25,7 +25,7 @@
                                             <div class="dashboard dashboard--typing">
                                                 <div class="dashboard-path paths">
                                                     <select class="js-tab paths-select select">
-                                                        <option value="1" ></option>
+                                                        <option value="1"></option>
 
                                                         <option value="2" selected="">Intermediate</option>
 
@@ -39,13 +39,17 @@
                                                                 <div class="bucket bucket--xs bucket--flag">
                                                                     <div class="bucket-content">
                                                                         <div class="path-title lh1 ">
-                                                                            <span class="">Beginner</span>
+                                                                            <span class="">
+                                                                                @foreach($users as $user)
+                                                                                {{ $user->level_name }}
+                                                                                @endforeach
+                                                                            </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="split-cell">
-                                                                <a href="/student/lesson/360/u-r-and-k-keys"
+                                                                <a href="#"
                                                                     data-id="360"
                                                                     class="js-start btn btn--a btn--pop btn--xxs path-btn mtxxs">
                                                                     <svg class="arrow arrow--r arrow--s icon">
@@ -60,91 +64,6 @@
 
                                                     </div>
 
-
-
-
-                                                    <div data-id="2" tabindex="0"
-                                                        class="js-tab path tab path--typing
-                    
-                    
-                    
-                    
-                    path--button
-                    ">
-
-                                                        <div class="split split--xs split--flag split--fw">
-                                                            <div class="split-cell">
-                                                                <div class="bucket bucket--xs bucket--flag">
-
-                                                                    <div class="bucket-content">
-
-                                                                        <div class="path-title lh1 ">
-                                                                            <span class="">Intermediate</span>
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="split-cell">
-
-                                                                <a href="/student/lesson/328/common-english-words"
-                                                                    data-id="328"
-                                                                    class="js-start btn btn--b btn--pop btn--xxs path-btn mtxxs">
-                                                                    <svg class="arrow arrow--r arrow--s icon">
-                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                            xlink:href="http://localhost:8000/user/dist/student/images/icons.svg#arrow">
-                                                                        </use>
-                                                                    </svg>
-                                                                </a>
-
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-
-
-
-                                                    <div data-id="3" tabindex="0"
-                                                        class="js-tab path tab path--typing
-                    
-                    
-                    
-                    path--roundBottom
-                    path--button
-                    ">
-
-                                                        <div class="split split--xs split--flag split--fw">
-                                                            <div class="split-cell">
-                                                                <div class="bucket bucket--xs bucket--flag">
-
-                                                                    <div class="bucket-content">
-
-                                                                        <div class="path-title lh1 ">
-                                                                            <span class="">Advanced</span>
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="split-cell">
-
-                                                                <a href=""
-                                                                    data-id="333"
-                                                                    class="js-start btn btn--b btn--pop btn--xxs path-btn mtxxs">
-                                                                    <svg class="arrow arrow--r arrow--s icon">
-                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                            xlink:href="http://localhost:8000/user/dist/student/images/icons.svg#arrow">
-                                                                        </use>
-                                                                    </svg>
-                                                                </a>
-
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
                                                     <div class="mascot mascot--a mascot--anchor mascot--l"></div>
 
 
@@ -197,60 +116,61 @@
                                                                 <h3 class="well well--s  well--b tc-i animate animate--d-05 animate--fadeInUp"
                                                                     style="animation-delay: 0s">Getting Started</h3>
 
-                                                                @foreach ($lessonc as $lesson )
-                                                                <div class="  lesson lessons--chunks animate animate--d-05 animate--fadeInUp"
-                                                                style="animation-delay: 0.05s">
-                                                                <div class="lesson-split split split--flag">
-                                                                    <div
-                                                                        class="lesson-content split-cell well well--t">
-                                                                        <div class="bucket  bucket--xs">
+                                                                @foreach ($lessonc as $lesson)
+                                                                    <div class="  lesson lessons--chunks animate animate--d-05 animate--fadeInUp"
+                                                                        style="animation-delay: 0.05s">
+                                                                        <div class="lesson-split split split--flag">
+                                                                            <div
+                                                                                class="lesson-content split-cell well well--t">
+                                                                                <div class="bucket  bucket--xs">
 
 
-                                                                            <div class="bucket-media"
-                                                                                data-id="359">
+                                                                                    <div class="bucket-media"
+                                                                                        data-id="359">
 
 
-                                                                                <svg class="star star--circle "
-                                                                                    viewBox="0 0 32 32">
-                                                                                    <circle cx="16px"
-                                                                                        cy="16px"
-                                                                                        r="15px">
-                                                                                    </circle>
-                                                                                    <text x="16"
-                                                                                        y="22"
-                                                                                        text-anchor="middle">{{$lesson->id}}</text>
-                                                                                </svg>
+                                                                                        <svg class="star star--circle "
+                                                                                            viewBox="0 0 32 32">
+                                                                                            <circle cx="16px"
+                                                                                                cy="16px"
+                                                                                                r="15px">
+                                                                                            </circle>
+                                                                                            <text x="16"
+                                                                                                y="22"
+                                                                                                text-anchor="middle">{{ $lesson->id }}</text>
+                                                                                        </svg>
 
 
-                                                                            </div>
-                                                                            <div class="bucket-content">
-                                                                                <div class="split">
-                                                                                    <div class="split-cell">
-                                                                                        <h3
-                                                                                            class="lesson-title  dib mbf">
-                                                                                            {{$lesson->title}}
-                                                                                        </h3>
                                                                                     </div>
+                                                                                    <div class="bucket-content">
+                                                                                        <div class="split">
+                                                                                            <div class="split-cell">
+                                                                                                <h3
+                                                                                                    class="lesson-title  dib mbf">
+                                                                                                    {{ $lesson->title }}
+                                                                                                </h3>
+                                                                                            </div>
 
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="lesson-action split-cell well well--t">
+                                                                                <a href="introduction/{{ $lesson->id }}"
+                                                                                    data-id="359"
+                                                                                    class="js-start btn--pop btn--shine lesson-btn btn btn--b btn--icon">
+                                                                                    <svg
+                                                                                        class="arrow arrow--m arrow--r btn-icon icon lesson-btnIcon">
+                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                            xlink:href="{{ asset('user/dist/student/images/icons.svg#arrow') }}">
+                                                                                        </use>
+                                                                                    </svg>
+                                                                                    Start
+                                                                                </a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div
-                                                                        class="lesson-action split-cell well well--t">
-                                                                        <a href="introduction/{{$lesson->id}}" data-id="359"
-                                                                            class="js-start btn--pop btn--shine lesson-btn btn btn--b btn--icon">
-                                                                            <svg
-                                                                                class="arrow arrow--m arrow--r btn-icon icon lesson-btnIcon">
-                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                    xlink:href="{{ asset('user/dist/student/images/icons.svg#arrow') }}">
-                                                                                </use>
-                                                                            </svg>
-                                                                            Start
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>                                                                    
                                                                 @endforeach
                                                             </div>
                                                         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Validation\Rules;
+
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use App\Models\Admin;
@@ -27,14 +28,14 @@ class AdminController extends Controller
         $teacherc = Teacher::all()->count();
         $lessonc = Lesson::all()->count();
         return view('admin.index',compact('userc','users','teacherc','lessonc'));
-    }  
+    }
 
     public function LessonShow(){
         $lessonc = Lesson::all()->count();
         $lessons = Lesson::orderBy('id')->paginate(40);
         return view('admin.lessons_show',compact('lessonc','lessons'));
     }
-    
+
     public function LevelShow(){
         $levelc = Level::all()->count();
         $levels = Level::orderBy('id')->paginate(40);
@@ -89,24 +90,13 @@ class AdminController extends Controller
     public function manageStudent()
     {
         $userc = User::all()->count();
-        $userc1 = User::get();
-         $uss =  UserResource::collection($userc1);
-             
-         foreach ($uss as $user) {
-            dd($user->get()) ;
-           
-            // Access other attributes as needed
-        }
-
-        $users = User::orderBy('id')->paginate(20);
-      
-        $level = Level::where("id",$users->id);
+        $users = User::with('level')->orderBy('id')->paginate(20);
         return view('admin.manage_student',compact('userc','users'));
     }
 
     public function manageCerticate()
-    {        
-        return view('admin.sertificat');    
+    {
+        return view('admin.sertificat');
     }
 
     public function manageTeacher(){

@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
-            $table->id();
+        Schema::table('levels', function (Blueprint $table) {
             $table->string('name');
             $table->text('description')->nullable();
-            $table->timestamps();
         });
     }
-
-    
 
     /**
      * Reverse the migrations.
@@ -30,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::table('levels', function (Blueprint $table) {
+            //
+        });
     }
 };

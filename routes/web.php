@@ -2,7 +2,10 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\LevelController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /* Admin Route */
 
@@ -36,11 +39,20 @@ Route::prefix('teacher')->group(function(){
     ->name('teacher.dashboard')->middleware('Teacher');
     Route::post('/login/owner',[TeacherController::class,'TeacherLogin'])->name('teacher.login');
     Route::get('/logout',[TeacherController::class, 'TeacherLogout'])->name('teacher.logout')->name('teacher.logout')->middleware('Teacher');
-   Route::get('/register',[TeacherController::class,'TeacherRegister'])->name('teacher.register');
-   Route::post('/register/create',[TeacherController::class,'TeacherRegisterCreate'])->name('teacher.register.create');
-   Route::get('/manage-student', [TeacherController::class, 'manageStud'])->name('student_manage');
-   Route::delete('/student/{id}', [AdminController::class, 'deleteUsers'])->name('teacher.deleteStudent');
-
+    Route::get('/register',[TeacherController::class,'TeacherRegister'])->name('teacher.register');
+    Route::post('/register/create',[TeacherController::class,'TeacherRegisterCreate'])->name('teacher.register.create');
+    Route::get('/manage-student', [TeacherController::class, 'manageStud'])->name('student_manage');
+    Route::delete('/student/{id}', [TeacherController::class, 'deleteUsers'])->name('teacher.deleteStudent');
+    // Levels Router
+    Route::get('/levels', [LevelController::class, 'index'])->name('level_list');
+    Route::get('/levels/create', [LevelController::class, 'create'])->name('create_leavel');
+    Route::post('/levels', [LevelController::class, 'store'])->name('store');
+    Route::get('/levels/{id}', [LevelController::class, 'show'])->name('levels.show');
+    Route::get('/levels/{id}/edit', [LevelController::class, 'edit'])->name('levels.edit');
+    Route::put('/levels/{id}', [LevelController::class, 'update'])->name('levels.update');
+    Route::delete('/levels/{id}', [LevelController::class, 'destroy'])->name('levels.destroy');
+    // statistique Route
+    Route::get('/stats',[StatsController::class, 'index'])->name('stats');
 });
 
 /* Teacher Route */
@@ -80,6 +92,7 @@ Route::get('/dashboard',[ProfileController::class,'getLesson'] ,function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::get('/blog' ,[ProfileController::class,'viewBlog'] , function () {
     return view('blog.index');
 })->middleware(['auth', 'verified'])->name('blog');
@@ -93,6 +106,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/introduction/{id}',[ProfileController::class,'introduction'])->name('introduction');
+
 });
 
 
