@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('levels', function (Blueprint $table) {
-            $table->string('name');
-            $table->text('description')->nullable();
-        });
+        Schema::table('formations', function (Blueprint $table) {
+            $table->unsignedBigInteger('niveau')->nullable();
+            $table->foreign('niveau')->references('id')->on('levels');
+        });              
     }
 
     /**
@@ -26,8 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('levels', function (Blueprint $table) {
-            //
+        Schema::table('formations', function (Blueprint $table) {
         });
     }
 };

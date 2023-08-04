@@ -68,6 +68,38 @@ body{
  font-size: 29px;
 }
 
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:20px;
+}
+
+.search-input {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.search-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  display:block;
+}
+
+.search-button:hover {
+  background-color: #3e8e41;
+}
+
+
+
+
 </style>
 <!-- wrapper -->
    <div class="wrapper">
@@ -89,6 +121,34 @@ body{
 
 <div class="content_wrapper">
 
+<form action="{{ route('students.index') }}" method="GET" class="search-form" onsubmit="return validateSearch()">
+    <div class="form-group">
+        <label for="search">Search:</label>
+        <input type="text" name="search" id="search" placeholder="Search...">
+    </div>
+    <div class="form-group">
+        <label for="created_at">Date of Creation:</label>
+        <input type="date" name="created_at" id="created_at">
+    </div>
+    <button type="submit" class="search-button">Search</button>
+</form>
+
+<script>
+    function validateSearch() {
+        let searchInput = document.getElementById("search");
+        let dateInput = document.getElementById("created_at");
+
+        if (searchInput.value.trim() == "" && dateInput.value.trim() == "") {
+            alert("Please enter a search term or a date.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+
+
 <!--middle content wrapper-->
 <div class="middle_content_wrapper">
      
@@ -104,10 +164,16 @@ body{
                           <tr>
                               <th>ID</th>
                               <th>Name</th>
+                              <th>Last Name</th>
                               <th>Email</th>
+                              <th>Phone</th>
+                              <th>Birth date</th>
                               <th>Level</th>
-                              <th>Delete</th>
-                              <th>Certificat</th>
+                              <!-- <th>Delete</th> -->
+                              <!-- <th>Certificat</th> -->
+                              <!-- <th>Deactive Account</th>
+                              <th>Active Account</th> -->
+                              <th>Account State</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -116,18 +182,31 @@ body{
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
+                                    <td @if ($user->prenam === null) style="color: red;" @endif>
+                                     {{ $user->prenam ?? 'VIDE' }}
+                                    </td>
                                     <td>{{ $user->email }}</td>
-                                    
+                                    <td @if ($user->phone === null) style="color: red;" @endif>
+                                        {{ $user->phone ?? 'VIDE' }}
+                                    </td>
+                                    <td @if ($user->birthday_date === null) style="color: red;" @endif>
+                                    @if ($user->birthday_date === null)
+                                        VIDE
+                                    @else
+                                        <input type="date" name="birthday_date" value="{{ $user->birthday_date }}">
+                                    @endif
+                                    </td>
+
                                     <td>
                                         {{$levelName = $user->level->name}}
-                                    </td>                                    <td>
-                                        <form action="{{ route('teacher.deleteStudent', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                    <td><a href="{{route('sertificat')}}"><button href="{{route('sertificat')}}" class="btn btn-primary">sertificat</button></a></td>
+                                    </td>                             
+                                    <td>
+                                    @if ($user->is_active)
+                                        <span style="color: green;">Active</span>
+                                    @else
+                                        <span style="color: red;">Deactivated</span>
+                                    @endif
+                                    </td> 
                                 </tr>
                             @endforeach       
                           </tr>

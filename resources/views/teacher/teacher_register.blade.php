@@ -7,7 +7,7 @@
         <meta name="author" content="">
         <link rel="icon" href="{{asset('panel/assets/images/favicon.png')}}" >
         <!--Page title-->
-        <title>Teacher easy Learning</title>
+        <title>Teacher qubec center</title>
         <!--bootstrap-->
         <link rel="stylesheet" href="{{asset('panel/assets/css/bootstrap.min.css')}}">
         <!--font awesome-->
@@ -65,7 +65,7 @@
                             </div>
                         </form>
                         <div class="footer">
-                            <p>Copyright &copy; 2020 <a href="https://easylearningbd.com/">easy Learning</a>. All rights reserved.</p>
+                            <p>Copyright &copy; 2020 <a href="https://easylearningbd.com/">qubec center</a>. All rights reserved.</p>
                         </div>
                     </div>
                 </div>

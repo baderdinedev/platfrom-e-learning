@@ -220,15 +220,12 @@
         </li>
         <li><a data-toggle="dropdown" href="#"><i class="far fa-user"></i></a>
                 <div class="user_item dropdown-menu dropdown-menu-right">
-                    <div class="admin">
-                        <a href="#" class="user_link"><img src="{{asset('panel/assets/images/admin.jpg')}}" alt=""></a>
-                    </div>
                 <ul>
-                    <li><a href="#"><span><i class="fas fa-user"></i></span> User Profile</a></li>
-                    <li><a href=" "><span><i class="fas fa-cogs"></i></span>  Password Change</a></li>
+                    <li><a href="{{route('teacher.profile')}}"><span><i class="fas fa-user"></i></span> User Profile</a></li>
+                    <!-- <li><a href=" "><span><i class="fas fa-cogs"></i></span>  Password Change</a></li> -->
                     <li>
 
-                        <a href="{{route('admin.logout')}}"><span><i class="fas fa-unlock-alt"></i></span> Logout</a></li>
+                        <a href="{{route('teacher.logout')}}"><span><i class="fas fa-unlock-alt"></i></span> Logout</a></li>
                 </ul>
             </div>
         </li>

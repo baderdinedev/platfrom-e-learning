@@ -3,25 +3,52 @@
 namespace App\Http\Controllers;
 use Illuminate\Validation\Rules;
 
-use App\Http\Resources\UserResource;
+
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Certificat;
 use App\Models\User;
 use App\Models\Teacher;
 use App\Models\Lesson;
 use App\Models\Level;
+use App\Models\inscriptionClassroom;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 
 class AdminController extends Controller
 {
     public function Index(){
         return view('admin.admin_login');
     }
+
+    public function forgetPassword() {
+        
+        // Generate a unique token and store it in the database
+        $token = Str::random(60);
+        $this->reset_password_token = $token;
+        $this->reset_password_created_at = Carbon::now();
+        $this->save();
+        
+        // Send an email to the admin with a link to reset their password
+        $data = [
+            'token' => $token,
+            'email' => $this->email
+        ];
+        Mail::send('emails.admin-reset-password', $data, function($message) {
+            $message->to($this->email)
+                ->subject('Reset Your Password');
+        });
+        
+        return "Password reset email sent to {$this->email}";
+    }
+
     public function Dashboard(){
         $userc = User::all()->count();
         $users = User::orderBy('id')->paginate(2);
@@ -91,12 +118,69 @@ class AdminController extends Controller
     {
         $userc = User::all()->count();
         $users = User::with('level')->orderBy('id')->paginate(20);
-        return view('admin.manage_student',compact('userc','users'));
+        // Test if user hase an inscription in classroom 
+        $usersInClassroom = User::whereHas('inscriptionClassroom')->pluck('id')->toArray();
+        return view('admin.manage_student',compact('userc','users', 'usersInClassroom'));
     }
 
-    public function manageCerticate()
+    public function SearchStudent(Request $request)
     {
-        return view('admin.sertificat');
+        $search = $request->query('search');
+        $students = User::where('name', 'like', "%$search%")
+                            ->orWhere('email', 'like', "%$search%")
+                            ->orWhere('id', 'like', "%$search%")
+                            ->orWhere('phone', 'like', "%$search%")
+                            ->paginate(10);
+        return view('teacher.search-student', compact('students'));
+    }
+
+    
+    public function activate($id)
+    {
+        $student = User::find($id);
+    
+        if (!$student) {
+            return redirect()->route('manage_student')->with('error', 'Student not found.');
+        }
+    
+        $student->is_active = true;
+        $student->save();
+    
+        return redirect()->route('manage_student')->with('success', 'Student account has been activated.');
+    }
+        
+
+    public function deactivate($id)
+    {
+        $student = User::find($id);
+    
+        if (!$student) {
+            return redirect()->route('manage_student')->with('error', 'Student not found.');
+        }
+    
+        $student->is_active = false;
+        $student->save();
+    
+        return redirect()->route('manage_student')->with('success', 'Student account has been deactivated.');
+    }
+
+    public function manageCerticate($id)
+    {
+        $user = User::find($id);
+    
+        if (!$user) {
+            abort(404); // User not found, handle appropriately
+        }
+    
+        return view('admin.sertificat', compact('user'));
+    }
+    public function attribute($id)
+    {
+        $certificat = new Certificat();
+        $certificat->user_id = $id;
+        $certificat->save();
+
+        return redirect()->back()->with('success', 'Certificate attributed successfully.');
     }
 
     public function manageTeacher(){
@@ -120,4 +204,5 @@ class AdminController extends Controller
     }
 
 
+    
 }

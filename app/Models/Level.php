@@ -15,5 +15,22 @@ class Level extends Model
         'name',
         'description'
     ];
+
+    public function lesson()
+    {
+        return $this->hasMany(Lesson::class);
+    }
+
     
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function formations()
+    {
+        return $this->hasMany(Formation::class);
+    }
+    
+
 }

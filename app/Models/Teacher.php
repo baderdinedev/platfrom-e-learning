@@ -22,7 +22,8 @@ class Teacher extends Authenticatable
         'name',
         'email',
         'password',
-        'status'
+        'status',
+        'remember_token'
     ];
 
     /**
@@ -43,5 +44,29 @@ class Teacher extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function generateToken()
+    {
+        $this->remember_token = Str::random(60);
+        $this->save();
+    }
+
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new TeacherResetPasswordNotification($token));
+    }
+    
+
+    public function classrooms()
+    {
+        return $this->hasMany(Classroom::class, 'created_by');
+    }
+    
+    public function news()
+    {
+        return $this->hasMany(News::class);
+    }
+
 }
 

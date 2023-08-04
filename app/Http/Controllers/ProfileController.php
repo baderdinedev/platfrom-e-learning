@@ -21,10 +21,6 @@ class ProfileController extends Controller
      */
 
 
-     public function introduction($id){
-        $lesson = Lesson::find($id);
-        return view('layouts.introduction',compact('lesson'));
-     }
 
 
     public function edit(Request $request): View
@@ -44,14 +40,6 @@ class ProfileController extends Controller
     }
 
 
-    public function getLesson(){
-        $lesson = Lesson::all()->count();
-        $lessonc = Lesson::orderBy('level_id')->paginate(5);
-        $users = User::select('users.*', 'levels.name as level_name')
-        ->join('levels', 'users.level_id', '=', 'levels.id')
-        ->get();
-        return view('layouts.app',compact('lesson','lessonc','users'));
-    }
 
     /**
      * Update the user's profile information.

@@ -12,14 +12,25 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('blog')" :active="request()->routeIs('blog')">
-                        blog
+                    <x-nav-link :href="route('users.show-info')" :active="request()->routeIs('show-info')">
+                        Account settings
                     </x-nav-link>
                 </div>
+                <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('chat')" :active="request()->routeIs('chat')">
-                        Chat
+                    <x-nav-link :href="route('join-class')" :active="request()->routeIs('join-class')">
+                         ClassRoom
                     </x-nav-link>
+                </div>                
+                
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('student-news')" :active="request()->routeIs('student-news')">
+                         News
+                    </x-nav-link>
+                </div> 
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+
                 </div>
             </div>
 
@@ -39,9 +50,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
+ 
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -85,9 +94,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
+
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

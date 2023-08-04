@@ -21,9 +21,13 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'name',
+        'prenam',
+        'birthday_date',
         'email',
         'password',
-        'level_id'
+        'level_id',
+        'phone',
+        'is_active',
     ];
     
     public function level()
@@ -48,5 +52,15 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function inscriptionClassroom()
+{
+    return $this->hasOne(InscriptionClassroom::class, 'user_id');
+}
 
 }

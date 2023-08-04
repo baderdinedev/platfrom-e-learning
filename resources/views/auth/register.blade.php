@@ -9,6 +9,24 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+        <div>
+            <x-input-label for="prenam" :value="__('Prenam')" />
+            <x-text-input id="prenam" class="block mt-1 w-full" type="text" name="prenam" :value="old('prenam')" required autofocus />
+            <x-input-error :messages="$errors->get('prenam')" class="mt-2" />
+        </div>
+        
+        <div>
+            <x-input-label for="birthday_date" :value="__('Birthday Date')" />
+            <x-text-input id="birthday_date" class="block mt-1 w-full" type="date" name="birthday_date" :value="old('birthday_date')" required />
+            <x-input-error :messages="$errors->get('birthday_date')" class="mt-2" />
+        </div>
+        
+        <div>
+            <x-input-label for="phone" :value="__('Phone')" />
+            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus />
+            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+        </div>
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />

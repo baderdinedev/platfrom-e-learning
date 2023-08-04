@@ -12,7 +12,8 @@ class LevelController extends Controller
             // Affiche le formulaire pour créer un nouveau niveau
             public function create()
             {
-                return view('teacher.levels.create_level');
+                $levels = Level::all();
+                return view('teacher.levels.create_level', compact('levels'));
             }
         
             // Enregistre un nouveau niveau dans la base de données

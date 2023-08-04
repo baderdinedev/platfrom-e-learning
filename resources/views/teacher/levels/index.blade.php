@@ -91,7 +91,9 @@ body{
 
 <!--middle content wrapper-->
 <div class="middle_content_wrapper">
-     
+<a href="{{route('create_leavel')}}" class="btn btn-primary mb-3">
+                <i class="fas fa-plus"></i> Create Level
+            </a>
     <section class="table_area">
         <div class="panel">
             <div class="panel_header">

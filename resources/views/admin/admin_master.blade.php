@@ -7,7 +7,7 @@
         <meta name="author" content="">
         <link rel="icon" href="{{asset('panel/assets/images/favicon.png')}}" >
         <!--Page title-->
-        <title>Admin easy Learning</title>
+        <title>Admin qubec center</title>
         <!--bootstrap-->
         <link rel="stylesheet" href="{{asset('panel/assets/css/bootstrap.min.css')}}">
         <!--font awesome-->

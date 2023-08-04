@@ -16,11 +16,10 @@
                     <div class="js-sidebar-nav"></div>
                     <div class="structure-content" data-intro-type="media" data-screen-count="0">
                         <div class="card card--o card--xs bg">
-
                             <div class="embed">
                                 <video id="myVideo" controls="controls" poster="">
                                     <source src="/1-welcome.webm" type="video/webm">
-                                    <source src="{{ asset($lesson->mediaUrl) }}"
+                                    <source src="{{ asset('storage/videos/' . $lesson->mediaUrl) }}"
                                         type="video/mp4">
                                     <track label="English" kind="subtitles" srclang="en"
                                         src="/dist/student/extras/video_subtitles/en/6-take_breaks.vtt">
@@ -30,10 +29,10 @@
                             <div class="well well--t well--xs split">
                                 <div class="split-cell"></div>
                                 <div class="split-cell">
-                                    <button data-tooltip="Tip: Press ENTER to continue"
+                                    <a href="" data-tooltip="Tip: Press ENTER to continue"
                                         class="js-continue-button has-tooltip btn btn--b js-btn-video">
                                         Skip Video
-                                    </button>
+                                     </a>
                                 </div>
                             </div>
                             @include('layouts.lessons.speach_description');

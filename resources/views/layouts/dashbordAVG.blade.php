@@ -229,20 +229,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-                                <div class="header-offsetText header-upgrade">
-
-                                    Upgrade to Remove Ads:
-                                    <a href="/student/upgrade" class="header-btn btn btn--xxs btn--a">
-                                        <svg class="btn-icon icon icon--s">
-                                            <use xlink:href="/dist/shared/images/icons-compiled.svg#premium"></use>
-                                        </svg>
-                                        Go Premium!
-                                    </a>
-
-                                </div>
-
                             </div>
                             <div class="stats stats--hero ">
                                 <div class="has-stats-list">

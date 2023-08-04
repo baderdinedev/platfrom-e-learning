@@ -109,22 +109,10 @@ body{
 
          <div class="upper">
 
-           <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid">
+           <img src="{{asset('user/backgroundprofile.jpg')}}" class="img-fluid">
            
          </div>
-
-         <div class="user text-center">
-
-           <div class="profile">
-
-             <img src="https://i.imgur.com/JgYD2nQ.jpg" class="rounded-circle" width="80">
-             
-           </div>
-
-         </div>
-
-          
-        
+                 
          <div class="mt-5 text-center">
 
            <h4 class="mb-0">{{Auth::guard('admin')->user()->name}}</h4>
